@@ -1,4 +1,3 @@
-
 import math
 #pygame.init()
 #window_size = (800, 800)
@@ -77,24 +76,28 @@ hexbin = {
  
 }
 answer = input('What is the number you want me to convert')
-type = input('What is the type of number you want me to convert from Hexadecimal, Binary or Denary')
-contype = input('What is the type of number you want me to convert to, Hexadecimal, Binary or Denary')
-if type == 'Hexadecimal' and contype == 'Binary':
-    bin = dicthex[answer[0]]*16
-elif type == 'Binary' and contype == 'Hexadecimal':
+type = input('What is the type of number you want me to convert from Hexadecimal, Binary or Denary, type H, B or D to enter. ')
+contype = input('What is the type of number you want me to convert to, Hexadecimal, Binary or Denary, type H, B or D to enter. ')
+type = type.lower()
+contype = contype.lower()
+if type == 'h' and contype == 'b':
+    bin = hexbin[answer[0]]+hexbin[answer[1]]+hexbin[answer[2]]+hexbin[answer[3]]
+    print(bin)
+elif type == 'b' and contype == 'h':
     nib1 = answer[0:4]
     nib2 = answer[4:8]
     nib3 = answer[8:12]
     nib4 = answer[12:16]
     nib = dictbinhex[nib1] + dictbinhex[nib2] + dictbinhex[nib3] + dictbinhex[nib4]
     print(nib)
-elif type == 'Hexadecimal' and contype == 'Denary':
-    hexden = dicthex[answer[0]]*16 + dicthex[answer[1]*1]
+elif type == 'h' and contype == 'd':
+    hexden = dicthex[answer[0]]*4096 + dicthex[answer[1]*256] + dicthex[answer[2]]*16 + dicthex[answer[3]]
     print((hexden))
-elif type == 'Denary' and contype == 'Binary':
-    hi = int(answer)
-    varden = math.floor(hi/128)
-elif type == 'Binary' and contype == 'Denary':
+elif type == 'd' and contype == 'b':
+    answer = int(answer)
+    varden = str(answer//32768)+ str((answer%32768)//16384) + str((answer%16384)//8192) + str((answer%8192)//4096) + str((answer%4096)//2048) + str((answer%2048)//1024) + str((answer%1024)//512) + str((answer%512)//256) + str((answer%256)//128) + str((answer%128)//64) + str((answer%64)//32) + str((answer%32)//16) + str((answer%16)//8) + str((answer%8)//4) + str((answer%4)//2) + str((answer%2)//1)
+    print(varden)
+elif type == 'b' and contype == 'd':
     
     print(  
     int(answer[0]) * 32768 +
@@ -115,7 +118,7 @@ elif type == 'Binary' and contype == 'Denary':
     int(answer[15]) * 1)
     
     
-elif type == 'Denary' and contype == 'Hexadecimal':
+elif type == 'd' and contype == 'h':
     answer = int(answer)
     anl = math.floor(answer/4096)
     anp = math.floor(answer/256)
@@ -124,3 +127,4 @@ elif type == 'Denary' and contype == 'Hexadecimal':
     print(str(dictden[anl])+str(dictden[anp])+str(dictden[ans])+str(dictden[aps]))
 else:
 	print('Please enter a valid number type')
+ 
