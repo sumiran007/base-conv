@@ -1,6 +1,4 @@
 import math
-#pygame.init()
-#window_size = (800, 800)
 ans1 = 0
 ans2 = 0
 ans3 = 0
