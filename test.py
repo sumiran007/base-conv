@@ -1,6 +1,12 @@
 import math
 #pygame.init()
 #window_size = (800, 800)
+ans1 = 0
+ans2 = 0
+ans3 = 0
+ans4 = 0
+hi = 0
+
 dicthex = {
 	'0':0,
 	'1':1,
@@ -120,11 +126,20 @@ elif type == 'b' and contype == 'd':
     
 elif type == 'd' and contype == 'h':
     answer = int(answer)
-    anl = math.floor(answer/4096)
-    anp = math.floor(answer/256)
-    ans = math.floor(answer//16) 
-    aps =answer%16
-    print(str(dictden[anl])+str(dictden[anp])+str(dictden[ans])+str(dictden[aps]))
+    def dtoh(answer, ans1, ans2, ans3, ans4, hi):
+        ans1 = (answer//4096)
+        anss1 = (answer%4096)
+        ans2 = (anss1//256)
+        anss2 = (anss1%256)
+        ans3 = (anss2//16) 
+        anss3 = (anss2%16)
+        ans4 = answer%16
+
+        hi = print(str(dictden[ans1])+str(dictden[ans2])+str(dictden[ans3])+str(dictden[ans4]))
+       
+
 else:
 	print('Please enter a valid number type')
- 
+
+
+dtoh(answer, ans1, ans2, ans3, ans4, hi)
