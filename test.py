@@ -154,6 +154,3 @@ elif type == 'd' and contype == 'h':
 
 else:
 	print('Please enter a valid number type')
-
-
-#
