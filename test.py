@@ -13,6 +13,7 @@ bin1 = 0
 bin2 = 0
 bin3 = 0
 bin4 = 0
+tot = 0
 dicthex = {
 	'0':0,
 	'1':1,
@@ -110,32 +111,20 @@ elif type == 'b' and contype == 'h':
         print(nib)
     bintohex(answer, bin1, bin2, bin3, bin4, bin)
 elif type == 'h' and contype == 'd':
+    
     hexden = dicthex[answer[0]]*4096 + dicthex[answer[1]*256] + dicthex[answer[2]]*16 + dicthex[answer[3]]
     print((hexden))
 elif type == 'd' and contype == 'b':
     answer = int(answer)
     varden = str(answer//32768)+ str((answer%32768)//16384) + str((answer%16384)//8192) + str((answer%8192)//4096) + str((answer%4096)//2048) + str((answer%2048)//1024) + str((answer%1024)//512) + str((answer%512)//256) + str((answer%256)//128) + str((answer%128)//64) + str((answer%64)//32) + str((answer%32)//16) + str((answer%16)//8) + str((answer%8)//4) + str((answer%4)//2) + str((answer%2)//1)
     print(varden)
+    
 elif type == 'b' and contype == 'd':
-    def bintoden(answer):
-        print(  
-        int(answer[0]) * 32768 +
-        int(answer[1]) * 16384 +
-        int(answer[2]) * 8192 +
-        int(answer[3]) * 4096 +
-        int(answer[4]) * 2048 +
-        int(answer[5]) * 1024 +
-        int(answer[6]) * 512 +
-        int(answer[7]) * 256 +
-        int(answer[8]) * 128 +
-        int(answer[9]) * 64 +
-        int(answer[10]) * 32 +
-        int(answer[11]) * 16 +
-        int(answer[12]) * 8 +
-        int(answer[13]) * 4 +
-        int(answer[14]) * 2 +
-        int(answer[15]) * 1)
-    bintoden(answer)
+    def bintoden(answer, tot):
+        for i in range (15,-1,-1):
+            tot = tot + int(answer[i])*(2**(15-i))
+        print(tot)
+    bintoden(answer, tot)
     
     
 elif type == 'd' and contype == 'h':
@@ -154,3 +143,4 @@ elif type == 'd' and contype == 'h':
 
 else:
 	print('Please enter a valid number type')
+	
